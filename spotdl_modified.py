@@ -48,7 +48,7 @@ def main():
 
 
 def create_tracklist(songs: list[Song]):
-    return [Track(song.json['name'], song.json['artist'], song.json['album_name'], song.json['cover_url']) for song in songs]
+    return [Track(song.json['name'], song.json['artist'], song.json['album_name'], song.json['year'], song.json['cover_url']) for song in songs]
 
 
 @dataclass
@@ -60,12 +60,14 @@ class Track:
         title: str = "",
         artist: str = "",
         album: str = "",
+        year: int = 0,
         cover: str = None
     ):
         self.title = title
         self.artist = artist
         self.album = album
         self.type = type
+        self.year = year
         self.cover = cover
 
     def get_file_path(self):
